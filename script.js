@@ -99,18 +99,20 @@ function mathLogic(symbol) {
     let result = 0;
     switch (symbol) {
         case '+':
-            result = parseInt(num1) + parseInt(num2);
+            result = parseFloat(num1) + parseFloat(num2);
             break;
         case '-':
-            result = parseInt(num1) - parseInt(num2);
+            result = parseFloat(num1) - parseFloat(num2);
             break;
         case '*':
-            result = parseInt(num1) * parseInt(num2);
+            result = parseFloat(num1) * parseFloat(num2);
             break;
         case '/':
-            result = parseInt(num1) / parseInt(num2);   
+            result = parseFloat(num1) / parseFloat(num2);   
             break;
     }
-    return result;
+
+    if (result - Math.floor(result) == 0) return result;
+    else return (Math.round(result * 100) / 100).toFixed(2);
 }
 
