@@ -23,6 +23,7 @@ ac.addEventListener('click', () => {
     num3 = 0;
     calc = false;
     clear = false;
+    enable = true;
     win.textContent= "";
 })
 
@@ -65,8 +66,8 @@ nums.forEach((e) => {
     } 
     if (e.textContent == ".") {
         e.addEventListener('click', () => {
-            if (!win.textContent.includes('.'))
-            win.textContent += e.textContent;
+            if (!win.textContent.includes('.') && win.textContent.length < 9)
+                win.textContent += e.textContent;
         })
     }
 });
@@ -77,7 +78,7 @@ function addWindow() {
         clear = false;
         enable = true;
     }
-    win.textContent += this.textContent;
+    if (win.textContent.length < 9) win.textContent += this.textContent;
 }
 
 function mathBtn() {
