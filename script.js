@@ -3,7 +3,7 @@ let num2 = 0;
 let num3 = 0;
 let opr = "";
 let calc = false;
-let clear = false;
+let clear = true;
 let enable = true;
 
 //queries
@@ -22,9 +22,9 @@ ac.addEventListener('click', () => {
     num2 = 0;
     num3 = 0;
     calc = false;
-    clear = false;
+    clear = true;
     enable = true;
-    win.textContent= "";
+    win.textContent= "0";
 })
 
 // negative button
@@ -113,7 +113,12 @@ function mathLogic(symbol) {
             break;
     }
 
-    if (result - Math.floor(result) == 0) return result;
-    else return (Math.round(result * 100) / 100).toFixed(2);
+    if (result - Math.floor(result) !== 0) 
+        result = (Math.round(result * 100) / 100).toFixed(2);
+
+    if (result > 999999999 || result < -999999999)
+        result = "TOO BIG";
+
+    return result;
 }
 
